@@ -5,7 +5,6 @@ from datetime import datetime
 
 app = Flask(__name__)  # Create a Flask application instance
 
-# Replace 'your_api_key_here' with your OpenWeatherMap API key
 API_KEY = "bf27d78cfc31b82465e4b7bed479255b"  # Store your OpenWeatherMap API key
 WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather"  # URL for the weather API endpoint
 
@@ -18,7 +17,7 @@ def index():
             # Set up the parameters for the API request
             params = {
                 'q': city,  # The city name
-                'appid': API_KEY,  # Your API key for authentication
+                'appid': API_KEY,  # API key for authentication
                 'units': 'metric'  # Use 'metric' for Celsius or 'imperial' for Fahrenheit
             }
             response = requests.get(WEATHER_URL, params=params)  # Make a GET request to the weather API
@@ -31,7 +30,6 @@ def index():
 
 @app.route('/calendar')
 def calendar_view():
-    # Get current date details
     today = datetime.today()
     current_year = today.year
     current_month = today.month
