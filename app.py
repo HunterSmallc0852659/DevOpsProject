@@ -7,7 +7,7 @@ import os
 load_dotenv()
 
 
-app = Flask(__name__)  # Create a Flask application instance
+app = Flask(__name__)  # Create a Flask application instance here
 
 API_KEY = os.getenv("API_KEY") # Store your OpenWeatherMap API key here
 WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather"  # URL for the weather API endpoint
