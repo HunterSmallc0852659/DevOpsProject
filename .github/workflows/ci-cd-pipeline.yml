@@ -23,5 +23,5 @@ jobs:
           pip install -r weatherApp/requirements.txt
 
       - name: Run Tests
-        run: |
-          pytest
+        run: pytest
+        working-directory: weatherApp/tests/
