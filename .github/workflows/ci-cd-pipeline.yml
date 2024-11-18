@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - first-branch # Not sure what the purpose of first-branch is, it's literally the same as main, included it anyway
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,5 +25,3 @@ jobs:
       - name: Run Tests
         run: |
           pytest
-
-# All CI/CD pipeline's supposed to do is run tests and make sure they work.. I dunno :3
