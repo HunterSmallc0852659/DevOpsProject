@@ -21,7 +21,7 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r weatherApp/requirements.txt
 
 # No Run Tests step, as we have no tests to run. I think that's app dev job??
 # All CI/CD pipeline's supposed to do is run tests and make sure they work.. I dunno :3
