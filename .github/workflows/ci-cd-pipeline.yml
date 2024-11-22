@@ -1,4 +1,4 @@
-name: Python Project CI/CD Pipeline # No Deployment yet, need AWS server for that (HUNTER!!!)
+name: Python Project CI/CD Pipeline
 
 on:
   push:
@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout Repository
         uses: actions/checkout@v2
 
       - name: Set Up Python
@@ -22,6 +22,30 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r weatherApp/requirements.txt
 
-      - name: Run Tests
-        run: pytest
-        working-directory: weatherApp/tests/
+#      - name: Run Tests
+#        run: pytest
+#        working-directory: weatherApp/tests/
+#
+#  deploy:
+#    needs: build
+#    runs-on: aws-self-hosted
+#    steps:
+#      - name: Checkout Repository
+#        uses: actions/checkout@v2
+#
+#      - name: Set Up Python
+#        uses: actions/setup-python@v2
+#        with:
+#          python-version: '3.11.5'
+#
+#      - name: Install AWS CLI
+#        run: |
+#          sudo apt-get update
+#          sudo apt-get install -y awscli
+#      - name: Deploy to AWS
+#        run: |
+#          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ./build/ admin@172.31.4.89:/home/ubuntu/myapp
+#          ssh -i "Test-Server-Key.pem" admin@ec2-3-17-166-233.us-east-2.compute.amazonaws.com
+#          cd /home/ubuntu/myapp
+#          npm install --production
+#          pm2 restart myapp

@@ -1,5 +1,5 @@
 import pytest
-from app import app  # Import the Flask app
+from weatherApp.app import app  # Import the Flask app
 
 @pytest.fixture
 def client():
