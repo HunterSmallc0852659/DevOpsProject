@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92ed035b-7c39-4ee0-850e-3472b4ce7658" name="Changes" comment="Trying to fix the GitHub!" />
+    <list default="true" id="92ed035b-7c39-4ee0-850e-3472b4ce7658" name="Changes" comment="trying to fix the GitHub">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,7 +56,7 @@
     "Python tests.Python tests in test_calendar.py.executor": "Run",
     "Python tests.Python tests in test_weather.py.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "first-branch",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
@@ -296,6 +298,7 @@
     <MESSAGE value="Updated CI/CD Pipeline, commented things that may not work." />
     <MESSAGE value="Modify CI/CD pipeline&#10;Comment out things that may not work, will revisit later." />
     <MESSAGE value="Trying to fix the GitHub!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Trying to fix the GitHub!" />
+    <MESSAGE value="trying to fix the GitHub" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to fix the GitHub" />
   </component>
 </project>
