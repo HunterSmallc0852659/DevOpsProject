@@ -1,5 +1,19 @@
+import sys
+import os
 import pytest
-from weatherApp.app import app  # Import the Flask app
+
+# Add the project root to sys.path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
+
+from weatherApp.app import app 
+
+class MockResponse:
+    def __init__(self, json_data, status_code):
+        self.json_data = json_data
+        self.status_code = status_code
+
+    def json(self):
+        return self.json_data
 
 @pytest.fixture
 def client():
@@ -7,8 +21,9 @@ def client():
         yield client
 
 def test_calendar_view(client):
+    # Test if the /calendar route is accessible
     response = client.get('/calendar')
     assert response.status_code == 200
-    assert b"Calendar" in response.data  # Ensure calendar page renders
-    assert b"Mon" in response.data  # Check if days of the week are displayed
-    assert b"today" in response.data  # Ensure "today" is marked correctly
+    assert b"Calendar" in response.data  # Check if the page title is rendered
+    assert b"Mon" in response.data  # Check if day labels are present
+    assert b"today" in response.data  # Check if "today" is marked

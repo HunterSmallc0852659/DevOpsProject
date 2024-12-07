@@ -4,8 +4,13 @@ import calendar
 from datetime import datetime
 from dotenv import load_dotenv
 import os
+import sys
 load_dotenv()
 
+# Ensure the project root is in PYTHONPATH for consistent imports
+project_root = os.getenv("PYTHONPATH", os.path.abspath(os.path.dirname(__file__)))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
 
 app = Flask(__name__)  # Create a Flask application instance
 
