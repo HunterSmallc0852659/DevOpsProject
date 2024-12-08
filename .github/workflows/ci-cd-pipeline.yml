@@ -47,13 +47,13 @@ jobs:
         env:
           KEY: ${{ secrets.EC2_KEY }}
         run: |
-          scp -i "$KEY" -o StrictHostKeyChecking=no -r ./ admin@172.31.4.89:/home/ubuntu/myapp
+          scp -i "$KEY" -o StrictHostKeyChecking=no -r ./ admin@172.31.4.89:/DevOpsApplication
 
       - name: Deploy to AWS
         env:
           KEY: ${{ secrets.EC2_KEY }}
         run: |
-          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ./build/ admin@172.31.4.89:/home/ubuntu/myapp
+          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ./build/ admin@172.31.4.89:/DevOpsApplication
           ssh -i "$KEY" admin@ec2-3-17-166-233.us-east-2.compute.amazonaws.com
           cd /home/ubuntu/myapp
           npm install --production
