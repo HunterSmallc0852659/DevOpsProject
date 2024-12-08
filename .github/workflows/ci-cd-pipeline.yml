@@ -50,10 +50,8 @@ jobs:
 #          scp -i "$KEY" -o StrictHostKeyChecking=no -r ./ admin@172.31.4.89:~/DevOpsApplication
 
       - name: Deploy to AWS
-        env:
-          KEY: ${{ secrets.EC2_KEY }}
         run: |
-          ssh -i "$KEY" admin@ec2-3-17-166-233.us-east-2.compute.amazonaws.com
+          ssh -i "Test-Server-Key.pem" admin@ec2-3-17-166-233.us-east-2.compute.amazonaws.com
           cd DevOpsApplication
           npm install --production
-          pm2 restart myapp
+          pm2 restart DevOpsApplication
