@@ -44,20 +44,20 @@ jobs:
           sudo apt-get install -y awscli
 
       - name: Set Up SSH
-        env:
-          KEY: ${{ secrets.DEPLOY_KEY }}
-        run: |
-          mkdir -p ~/.ssh
-          echo "$KEY" | tr -d '\r' > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H ec2-3-17-166-233.us-east-2.compute.amazonaws.com >> ~/.ssh/known_hosts
+
 
       - name: Debug SSH
         run: |
-          ssh -v -i ~/.ssh/id_rsa admin@ec2-3-17-166-233.us-east-2.compute.amazonaws.com
+          ssh -v -i ~/.ssh/deploy_key admin@ec2-3-17-166-233.us-east-2.compute.amazonaws.com
 
       - name: Deploy to AWS
+        env:
+          KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
-          ssh -i ~/.ssh/id_rsa admin@ec2-3-17-166-233.us-east-2.compute.amazonaws.com
+          echo "$KEY" | tr -d '\r' > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H ec2-3-17-166-233.us-east-2.compute.amazonaws.com >> ~/.ssh/known_hosts
+          ssh -i ~/.ssh/deploy_key admin@ec2-3-17-166-233.us-east-2.compute.amazonaws.com << 'EOF'
           cd DevOpsApplication
           npm install --production
+          EOF
