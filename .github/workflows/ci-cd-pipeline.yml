@@ -45,7 +45,7 @@ jobs:
 
       - name: Set Up SSH
         env:
-          KEY: ${{ secrets.EC2_KEY }}
+          KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
           mkdir -p ~/.ssh
           echo "$KEY" | tr -d '\r' > ~/.ssh/id_rsa
