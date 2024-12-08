@@ -43,12 +43,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y awscli
 
-      - name: Set Up SSH
-
-
-      - name: Debug SSH
-        run: |
-          ssh -v -i ~/.ssh/deploy_key admin@ec2-3-17-166-233.us-east-2.compute.amazonaws.com
+#      - name: Debug SSH
+#        run: |
+#          ssh -v -i ~/.ssh/deploy_key admin@ec2-3-17-166-233.us-east-2.compute.amazonaws.com
 
       - name: Deploy to AWS
         env:
