@@ -52,6 +52,10 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ec2-3-17-166-233.us-east-2.compute.amazonaws.com >> ~/.ssh/known_hosts
 
+      - name: Debug SSH
+        run: |
+          ssh -v -i ~/.ssh/id_rsa admin@ec2-3-17-166-233.us-east-2.compute.amazonaws.com
+
       - name: Deploy to AWS
         run: |
           ssh -i ~/.ssh/id_rsa admin@ec2-3-17-166-233.us-east-2.compute.amazonaws.com
