@@ -28,7 +28,7 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: aws-self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
