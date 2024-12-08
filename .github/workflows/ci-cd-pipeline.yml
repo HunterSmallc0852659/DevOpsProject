@@ -53,8 +53,7 @@ jobs:
         env:
           KEY: ${{ secrets.EC2_KEY }}
         run: |
-          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ./build/ admin@172.31.4.89:/DevOpsApplication
           ssh -i "$KEY" admin@ec2-3-17-166-233.us-east-2.compute.amazonaws.com
-          cd /home/ubuntu/myapp
+          cd DevOpsApplication
           npm install --production
           pm2 restart myapp
