@@ -53,10 +53,7 @@ jobs:
           ssh-keyscan -H ec2-3-17-166-233.us-east-2.compute.amazonaws.com >> ~/.ssh/known_hosts
 
       - name: Deploy to AWS
-        env:
-          KEY: ${{ secrets.EC2_KEY }}
         run: |
-          ssh -i "$KEY" admin@ec2-3-17-166-233.us-east-2.compute.amazonaws.com
+          ssh -i ~/.ssh/id_rsa admin@ec2-3-17-166-233.us-east-2.compute.amazonaws.com
           cd DevOpsApplication
           npm install --production
-          pm2 restart DevOpsApplication
