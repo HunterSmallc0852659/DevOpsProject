@@ -43,15 +43,20 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y awscli
 
-#      - name: Copy files via scp
-#        env:
-#          KEY: ${{ secrets.EC2_KEY }}
-#        run: |
-#          scp -i "$KEY" -o StrictHostKeyChecking=no -r ./ admin@172.31.4.89:~/DevOpsApplication
+      - name: Set Up SSH
+        env:
+          KEY: ${{ secrets.EC2_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ec2-3-17-166-233.us-east-2.compute.amazonaws.com >> ~/.ssh/known_hosts
 
       - name: Deploy to AWS
+        env:
+          KEY: ${{ secrets.EC2_KEY }}
         run: |
-          ssh -i "Test-Server-Key.pem" admin@ec2-3-17-166-233.us-east-2.compute.amazonaws.com
+          ssh -i "$KEY" admin@ec2-3-17-166-233.us-east-2.compute.amazonaws.com
           cd DevOpsApplication
           npm install --production
           pm2 restart DevOpsApplication
