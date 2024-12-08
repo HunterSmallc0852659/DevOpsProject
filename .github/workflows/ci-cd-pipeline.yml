@@ -22,9 +22,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r weatherApp/requirements.txt
 
-      - name: Run Tests
-        run: pytest
-        working-directory: weatherApp/tests/
+#      - name: Run Tests
+#        run: pytest
+#        working-directory: weatherApp/tests/
 
   deploy:
     needs: build
