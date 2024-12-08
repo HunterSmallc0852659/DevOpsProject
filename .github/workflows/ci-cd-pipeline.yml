@@ -48,7 +48,7 @@ jobs:
           KEY: ${{ secrets.EC2_KEY }}
         run: |
           mkdir -p ~/.ssh
-          echo "$KEY" > ~/.ssh/id_rsa
+          echo "$KEY" | tr -d '\r' > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ec2-3-17-166-233.us-east-2.compute.amazonaws.com >> ~/.ssh/known_hosts
 
