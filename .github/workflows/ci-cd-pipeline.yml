@@ -22,39 +22,39 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r weatherApp/requirements.txt
 
-#      - name: Run Tests
-#        run: pytest
-#        working-directory: weatherApp/tests/
-#
-#  deploy:
-#    needs: build
-#    runs-on: aws-self-hosted
-#    steps:
-#      - name: Checkout Repository
-#        uses: actions/checkout@v2
-#
-#      - name: Set Up Python
-#        uses: actions/setup-python@v2
-#        with:
-#          python-version: '3.11.5'
-#
-#      - name: Install AWS CLI
-#        run: |
-#          sudo apt-get update
-#          sudo apt-get install -y awscli
-#
-#      - name: Copy files via scp
-#        env:
-#          KEY: ${{ secrets.EC2_KEY }}
-#        run: |
-#          scp -i "$KEY" -o StrictHostKeyChecking=no -r ./ admin@172.31.4.89:/home/ubuntu/myapp
-#
-#      - name: Deploy to AWS
-#        env:
-#          KEY: ${{ secrets.EC2_KEY }}
-#        run: |
-#          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ./build/ admin@172.31.4.89:/home/ubuntu/myapp
-#          ssh -i "$KEY" admin@ec2-3-17-166-233.us-east-2.compute.amazonaws.com
-#          cd /home/ubuntu/myapp
-#          npm install --production
-#          pm2 restart myapp
+      - name: Run Tests
+        run: pytest
+        working-directory: weatherApp/tests/
+
+  deploy:
+    needs: build
+    runs-on: aws-self-hosted
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set Up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.11.5'
+
+      - name: Install AWS CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y awscli
+
+      - name: Copy files via scp
+        env:
+          KEY: ${{ secrets.EC2_KEY }}
+        run: |
+          scp -i "$KEY" -o StrictHostKeyChecking=no -r ./ admin@172.31.4.89:/home/ubuntu/myapp
+
+      - name: Deploy to AWS
+        env:
+          KEY: ${{ secrets.EC2_KEY }}
+        run: |
+          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ./build/ admin@172.31.4.89:/home/ubuntu/myapp
+          ssh -i "$KEY" admin@ec2-3-17-166-233.us-east-2.compute.amazonaws.com
+          cd /home/ubuntu/myapp
+          npm install --production
+          pm2 restart myapp
