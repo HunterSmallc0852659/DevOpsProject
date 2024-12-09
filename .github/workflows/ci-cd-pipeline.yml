@@ -49,7 +49,7 @@ jobs:
         run: |
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh 
-          echo "$KEY" | tr -d '\r' > ~/.ssh/deploy_key
+          cp ./Test-Server-Key.pem ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -H ec2-3-17-166-233.us-east-2.compute.amazonaws.com >> ~/.ssh/known_hosts
 
