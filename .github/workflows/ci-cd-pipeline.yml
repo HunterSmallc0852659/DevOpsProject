@@ -61,7 +61,7 @@ jobs:
           
           cd ~
           if [ ! -d "DevOpsApplication" ]; then
-            git clone https://github.com/your-repo.git DevOpsApplication
+            git clone https://github.com/HunterSmallc0852659/DevOpsProject DevOpsApplication
           fi
           cd DevOpsApplication
           
