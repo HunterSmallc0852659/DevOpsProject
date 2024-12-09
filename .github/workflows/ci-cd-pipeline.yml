@@ -44,8 +44,6 @@ jobs:
           sudo apt-get install -y awscli
 
       - name: Set Up SSH
-        env:
-          KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh 
@@ -58,16 +56,6 @@ jobs:
           ssh -i ~/.ssh/deploy_key admin@ec2-3-17-166-233.us-east-2.compute.amazonaws.com << 'EOF'
           sudo apt-get update -y
           sudo apt-get install -y git python3 python3-venv
-          
-          cd ~
-
-          if [ -d "DevOpsApplication" ] && [ ! -d "DevOpsApplication/.git" ]; then
-            rm -rf DevOpsApplication
-          fi
-          
-          if [ ! -d "DevOpsApplication" ]; then
-            git clone https://github.com/HunterSmallc0852659/DevOpsProject DevOpsApplication
-          fi
           
           cd DevOpsApplication
           git pull origin main
